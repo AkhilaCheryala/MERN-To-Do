@@ -14,7 +14,23 @@ import './TaskForm.css';
         <input name="team"className='team-input' value={team}/>
         <label htmlFor="assignee">Assignee</label>
         <input name="assignee" className='assignee-input' value={assignee}/>
-        <button className='status'>Status</button>
+        <label htmlFor='priority'>Priority:</label>
+        <select name='priority' id='priority'> 
+         <option value={""}>select</option>
+         <option value={"one"}>p0</option>
+         <option value={"two"}>p1</option>
+         <option value={"three"}>p2</option>
+        </select>
+        <label htmlFor='status'>Status</label>
+        <select name='status'>
+         <option value={""}>select</option>
+         <option value={"progress"}>In Progress</option>
+         <option value={"completed"}>completed</option>
+         <option value={"deployed"}>Deployed</option>
+        </select>
+     
+        <button className='create-btn'>Create</button>
+        
      </div>
   </form>
     );

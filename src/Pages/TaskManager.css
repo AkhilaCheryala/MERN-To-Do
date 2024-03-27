@@ -1,0 +1,53 @@
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 2rem;
+}
+.login-btn, .signup-btn{
+    width: max-content;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    padding: 7px 1rem;
+    border-radius: 3px;
+    margin: 1rem 0;
+    color: rgb(255, 255, 255);
+   
+}
+.bi-person-circle{
+    font-size: 1rem;  
+}
+.task-mg{
+ border: 2px solid rgb(211, 243, 245);
+border-radius: 5px;
+padding: 2rem;
+
+}
+.filter-part{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.filter-btn{
+    width: max-content;
+    background-color: rgb(220, 89, 246);
+    border: none;
+    padding: 5px 1rem;
+    border-radius: 3px;
+    margin: 1rem 0;
+    color: white;
+    box-shadow: 2px 2px 2px grey;
+}
+.add-task{
+    width: max-content;
+    background-color: rgb(89, 246, 223);
+    border: none;
+    padding: 7px 1rem;
+    border-radius: 3px;
+    font-weight: 600;
+    margin: 1rem 0 1rem 8rem;
+    color: rgb(0, 0, 0);
+    box-shadow: 2px 2px 2px rgb(57, 56, 56);   
+}

@@ -1,13 +1,12 @@
-import TaskForm from "../Components/TaskForm";
+import Signup from '../Components/Signup';
 import './Home.css';
+import Banner from '../assets/Banner.png';
+
 const Home =()=>{
     return(
         <div className="home">
-            <nav>
-                <h1> Task Board</h1>
-                <span className="bi bi-person-circle"></span>
-            </nav>
-        <TaskForm/>
+            <img src={Banner} alt=''/>
+            <Signup/>
         </div>
     );
 }

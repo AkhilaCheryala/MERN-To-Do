@@ -1,0 +1,24 @@
+.x{
+    display: flex;
+    margin: 10px 0;
+    width: 200px;
+    flex-direction: column;
+}
+.signup-form{
+    position: absolute;
+    border: 2px solid rgb(37, 38, 38);
+    padding: 1rem 0 2rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 30%;
+    right: 10%;
+background-color: white;
+}
+input{
+    padding: 15px;
+}
+p{
+    font-size: 14px;
+}

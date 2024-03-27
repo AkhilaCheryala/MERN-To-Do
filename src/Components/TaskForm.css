@@ -1,9 +1,5 @@
-form{
-border: 2px solid rgb(191, 244, 246);
-border-radius: 5px;
-width: 300px;
-padding: 2rem;
-
+.task-form{
+    width: 400px;
 }
 .form_inputs{
     display: flex;
@@ -21,13 +17,14 @@ input{
     box-sizing: border-box;
    
 }
+
 .description-input{
    height: 12vh;
     box-sizing:border-box;
     white-space: normal;
     overflow: auto
 }
-.status{
+.create-btn{
     width: max-content;
     background-color: rgb(220, 89, 246);
     border: none;
