@@ -5,7 +5,7 @@ import TaskForm from './Components/TaskForm';
 import Filter from './Components/Filter';
 import TaskManager from './Pages/TaskManager';
 import Signup from './Components/Signup';
-
+import Login from './Components/Login';
 function App() {
   
 
@@ -17,6 +17,7 @@ function App() {
         <Route exact path="/Filter" element={<Filter/>}/>
         <Route exact path="/TaskManager" element={<TaskManager/>}/>
         <Route exact path="/Signup" element={<Signup/>}/>
+        <Route exact path="/Login" element={<Login/>}/>
         </Routes>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     </Router>

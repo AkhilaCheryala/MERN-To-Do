@@ -4,7 +4,7 @@ import Banner from '../assets/Banner.png';
 
 const Home =()=>{
     return(
-        <div className="home">
+        <div className="home-page">
             <img src={Banner} alt=''/>
             <Signup/>
         </div>
