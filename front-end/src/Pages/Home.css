@@ -1,10 +1,9 @@
 img{
     width: 600px;
    position: relative;
-   
 }
-/* .home-page{
-   display: flex;
-   gap: 12rem;
-   padding: 4rem 0;
-} */
+.home-page{
+    display: flex;
+    gap: 12rem;
+    margin-top: 4rem;
+}

@@ -1,10 +1,11 @@
-import { Link} from 'react-router-dom';
+import { Link ,  useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './Signup.css';
 import { useState } from 'react';
 
 
 const Signup = () => {
+    const navigate = useNavigate();
 
     const[formData, setFormData]= useState({
         username:'',
@@ -19,7 +20,7 @@ const Signup = () => {
     try{
         const res = await axios.post('/api/Users/signup',formData);
         console.log(res.data);
-        window.location.href = '/TaskManager';
+     navigate('/TaskManager');
     }
     catch(err){
 console.error(err);

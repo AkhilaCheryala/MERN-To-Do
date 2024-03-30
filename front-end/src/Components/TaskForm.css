@@ -1,15 +1,17 @@
 .task-form{
     width: 300px;
-    position: absolute;
-    left: 30%;
+   position: absolute;
+   right: 35%;
+   top: 10%;
+   z-index: 1000;
 }
 .form_inputs{
     display: flex;
     flex-direction: column;
-   gap: 5px;
+   gap: 7px;
    border: 1px solid grey;
-   padding: 0 2rem 1rem;
-   border-radius: 10px;
+   padding:  2rem 1rem;
+   background-color: white;
 }
 input{
     margin: 2px 0;
@@ -17,15 +19,22 @@ input{
     border-radius: 4px;
     height: 25px;
     box-sizing: border-box;
+    background-color: rgb(249, 237, 249);
    
+}
+select{
+    margin: 1rem 5px;
+    padding: 2px;
+    background-color:rgb(249, 237, 249) ;
 }
 
 .description-input{
    height: 12vh;
     box-sizing:border-box;
     white-space: normal;
-    overflow: auto
+    
 }
+
 .create-btn{
     width: max-content;
     background-color: rgb(220, 89, 246);
@@ -36,11 +45,14 @@ input{
     color: white;
     box-shadow: 2px 2px 2px grey;
 }
-.status-bar{
-    height: 7vh;
-    background-color: white;
-    margin: 0 -2rem 2rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.close-btn{
+    background-color: rgb(239, 63, 63);
+    position:absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    width: max-content;
+    color: white;
+    padding: 4px 6px;
 
 }
