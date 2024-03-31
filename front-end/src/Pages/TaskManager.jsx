@@ -2,51 +2,71 @@ import TaskForm from '../Components/TaskForm';
 import { useState } from "react";
 import Filter from "../Components/Filter";
 import './TaskManager.css';
+import { useLocation } from 'react-router-dom';
+
 
 const TaskManager = () => {
+    const location = useLocation();
+    const user = location.state ? location.state.user : null;
+
+
     const [tasks, setTasks] = useState([]);
     const [showTaskForm, setShowTaskForm] = useState(false);
     const [selectedTaskId, setSelectedTaskId] = useState(null);
     const [editingTask, setEditingTask] = useState(null);
 
-    const handleAddTask = () => {
-        if(editingTask !==null){
-            setShowTaskForm(false);
-        }else{
-        setShowTaskForm(true);}
-    };
-    
+   
 
-    const handleTaskCreated = (formData) => {
-        if(editingTask !==null){
-            const updatedTasks = tasks.map(task =>{
-                if(task.id ===editingTask.id){
-                    return{...task,...formData};
+    const handleAddTask = () => {
+        if (editingTask !== null) {
+            setShowTaskForm(false);
+        } else {
+            setShowTaskForm(true);
+        }
+    };
+
+    const handleTaskCreated = async (formData) => {
+       
+        if (editingTask !== null) {
+         
+            const updatedTasks = tasks.map(task => {
+                if (task.id === editingTask.id) {
+                    return { ...task, ...formData };
                 }
                 return task;
             });
             setTasks(updatedTasks);
             setEditingTask(null);
-        }else{
-
-        
-        const newTask = {
-            id: tasks.length + 1, // Generate unique ID for the task
-            ...formData
-        };
-    
-        setTasks([...tasks, newTask]);
-    }
+        } else {
+            const newTask = {
+                id: tasks.length + 1, // Generate unique ID for the task
+                ...formData
+            };
+            setTasks([...tasks, newTask]);
+        }
         setShowTaskForm(false);
-        setFormData({
-            title: "",
-            description: "",
-            team: "",
-            assignee: "",
-            priority: "",
-            status:""
-        });
+    // Send task data along with user signup data
+        const userData = {
+            username: user.username,
+            email: user.email,
+            password: user.password,
+            tasks: [{ title: formData.title, description: formData.description }] // Send task data
+        };
+        try {
+            const response = await fetch('http://localhost:8080/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
+
     const handleEdit = (taskId) => {
         const taskToEdit = tasks.find(task => task.id === taskId);
         setEditingTask(taskToEdit);
@@ -63,6 +83,7 @@ const TaskManager = () => {
     const handleEditOptions = (taskId) => {
         setSelectedTaskId(taskId === selectedTaskId ? null : taskId); // Toggle the selected task ID
     };
+
     const handleCloseForm = () => {
         setShowTaskForm(false);
         setEditingTask(null);
@@ -78,20 +99,20 @@ const TaskManager = () => {
                 <div>
                     <Filter onAddTask={handleAddTask} />
                 </div>
-                {showTaskForm && <TaskForm onTaskCreated={handleTaskCreated} editingTask={editingTask} onCancel={() => {setShowTaskForm(false); setEditingTask(null);}}onClose={handleCloseForm}/>}
+                {showTaskForm && <TaskForm onTaskCreated={handleTaskCreated} editingTask={editingTask} onCancel={() => { setShowTaskForm(false); setEditingTask(null); }} onClose={handleCloseForm} />}
                 <div className="task-list">
                     {tasks.map(task => (
                         <div key={task.id} className="task-item">
                             <div className='task-options'>
                                 <h2>Task {task.id}</h2>
                                 <div className='task-dropdown'>
-                                <span className='bi bi-three-dots-vertical' onClick={() => handleEditOptions(task.id)}></span>
-                                {selectedTaskId === task.id && (
-                                    <div className='dropdown-content'>
-                                        <button onClick={()=>handleEdit(task.id)}>Edit</button>
-                                        <button onClick={()=>handleDelete(task.id)}>Delete</button>
-                                    </div>
-                                )}
+                                    <span className='bi bi-three-dots-vertical' onClick={() => handleEditOptions(task.id)}></span>
+                                    {selectedTaskId === task.id && (
+                                        <div className='dropdown-content'>
+                                            <button onClick={() => handleEdit(task.id)}>Edit</button>
+                                            <button onClick={() => handleDelete(task.id)}>Delete</button>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <h3>{task.title}</h3>
@@ -107,4 +128,5 @@ const TaskManager = () => {
         </div>
     );
 };
- export default TaskManager
+
+export default TaskManager;

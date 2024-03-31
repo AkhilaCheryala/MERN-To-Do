@@ -1,8 +1,27 @@
+import { useState } from 'react';
 import './Signup.css';
 import { Link } from 'react-router-dom';
 const Login = () => {
+    const [username, setUsername] =useState('');
+    const[password,  setPassword] = useState('');
+    const handleLoginSubmit = async (e) =>{
+        e.preventDefault();
+        try{
+const response = await fetch('http://localhost:8080/login',{
+     method:'POST',
+     headers:{
+        'Content-Type':'application/json'
+     },
+     body:JSON.stringify({username,password})
+});
+const data = await response.json();
+console.log(data);
+        }catch(error){
+            console.error('Error',error);
+        }
+    }
     return (
-        <form className="signup-form" action="POST">
+        <form className="signup-form" onSubmit={handleLoginSubmit}>
             <h2><u>Login</u></h2>
             <div className='x'>
                 <label htmlFor='username'>Username:</label>
